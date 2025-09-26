@@ -1,0 +1,7 @@
+services:
+  service1:
+    build: ./service1
+    container_name: service1
+    ports:
+      - "9000:8199"
+    restart: always
