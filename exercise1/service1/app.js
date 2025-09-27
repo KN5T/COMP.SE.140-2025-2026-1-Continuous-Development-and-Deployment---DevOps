@@ -14,7 +14,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/status", async function(req, res) {
-    const timeStamp = new Date().toISOString()
+    const timeStamp = new Date().toISOString().split(".")[0] + "Z"
     const upTime = secondsToHours(process.uptime())
     const diskSpace = await checkDiskSpace("/") 
     const freeSpaceMB = diskSpace.free / (1024*1024)

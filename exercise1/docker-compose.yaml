@@ -5,3 +5,10 @@ services:
     ports:
       - "9000:8199"
     restart: always
+
+  service2:
+    build: ./service2
+    container_name: service2
+    ports:
+      - "5000:5000"
+    restart: always
