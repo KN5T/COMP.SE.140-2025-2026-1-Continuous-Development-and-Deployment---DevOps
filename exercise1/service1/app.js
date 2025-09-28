@@ -41,10 +41,6 @@ const sendRecordToStorage = async (record) => {
     }
 }
 
-app.get("/", (req, res) => {
-    return res.send("Hello World!")
-})
-
 app.get("/status", async (req, res) => {
     const record1 = await createRecord()
     await sendRecordToStorage(record1)
@@ -58,8 +54,10 @@ app.get("/status", async (req, res) => {
     return res.type("text").send(`${record1}\n${record2}`)
 })
 
-app.get("/log", (req, res) => {
-    return res.send("Log route")
+app.get("/log", async (req, res) => {
+    const response = await fetch("http://storage:5001/log")
+    const data = await response.text()
+    return res.type("text").send(data)
 })
 
 app.listen(8199, () => {

@@ -5,12 +5,9 @@ const fs = require('fs')
 
 app.use(express.text())
 
-app.get("/", (req, res) => {
-    return res.send("Hello Storage!")
-})
-
 app.get("/log", (req, res) => {
-    return res.send("Return log!")
+    const records = fs.readFileSync("/storage/records.txt", "utf8")
+    return res.send(records)
 })
 
 app.post("/log", (req, res) => {
