@@ -2,6 +2,7 @@ from flask import Flask
 import time
 import datetime
 import shutil
+import requests
 
 startTime = time.time()
 
@@ -22,13 +23,18 @@ def createRecord():
     freeDiskSpace = getFreeDiskSpace()
     return f"{timestamp}: uptime {secondsToHours(uptime)} hours, free disk in root: {freeDiskSpace:.2f} MBytes"
 
-@app.route("/")
-def home():
-    return "Welcome to Flask with Docker!"
+def sendRecordToStorage(record):
+    response = requests.post("http://storage:5001/log", data=record, headers={"Content-Type": "text/plain"})
+
+    if not response.ok:
+        print("Failed to store the record")
+    else:
+        print("Record stored succesfully")
 
 @app.route("/status")
 def status():
     record = createRecord()
+    sendRecordToStorage(record)
     
     with open("/data/records.txt", "a") as f:
         f.write(record + "\n")

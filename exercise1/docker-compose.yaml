@@ -19,5 +19,17 @@ services:
     volumes:
       - ./vStorage:/data
 
+  storage:
+    build: ./storage
+    container_name: storage
+    restart: always
+    networks:
+      - services
+    volumes:
+      - storage:/storage
+
 networks:
   services:
+
+volumes:
+  storage:
