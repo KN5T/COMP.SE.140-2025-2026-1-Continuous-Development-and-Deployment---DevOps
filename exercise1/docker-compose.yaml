@@ -5,10 +5,19 @@ services:
     ports:
       - "9000:8199"
     restart: always
-
+    networks:
+      - services
+    volumes:
+      - ./vStorage:/data
+      
   service2:
     build: ./service2
     container_name: service2
-    ports:
-      - "5000:5000"
     restart: always
+    networks:
+      - services
+    volumes:
+      - ./vStorage:/data
+
+networks:
+  services:
