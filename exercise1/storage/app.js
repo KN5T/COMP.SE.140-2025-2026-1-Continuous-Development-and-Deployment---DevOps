@@ -6,6 +6,10 @@ const fs = require('fs')
 app.use(express.text())
 
 app.get("/log", (req, res) => {
+    if (!fs.existsSync("/storage/records.txt")) {
+        return res.type("text/plain").send("")
+    }
+
     const records = fs.readFileSync("/storage/records.txt", "utf8")
     return res.send(records)
 })
@@ -26,6 +30,6 @@ app.post("/log", (req, res) => {
     }
 })
 
-app.listen(5001, function(){
+app.listen(5001, () => {
     console.log('Listening on port 5001')
 })

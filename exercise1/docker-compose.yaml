@@ -3,7 +3,7 @@ services:
     build: ./service1
     container_name: service1
     ports:
-      - "9000:8199"
+      - "8199:8199"
     restart: always
     networks:
       - services
