@@ -1,0 +1,7 @@
+Used LLM tool: ChatGPT (OpenAI GPT-5)
+
+Motivation / reason to use LLM: I wanted help in creating a clear structure for my report and in improving the grammar of the English text.
+
+How and why LLM helped: The LLM provided me with a draft report structure, suggested how to phrase some sections more clearly in English and corrected grammatical mistakes. This saved time and made the final text more fluent.
+
+What kind of mistakes LLM did: Sometimes the LLM used overly formal wording so I had to adjust some of the text myself.
